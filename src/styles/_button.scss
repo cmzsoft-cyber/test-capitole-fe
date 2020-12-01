@@ -1,0 +1,24 @@
+$colorHoverButton: rgba(245,0,87,0.7);
+
+.btn-custom{
+    position: absolute;
+    right: 2rem;
+    bottom: 2rem;
+}
+
+.MuiIcon-root{
+    font-size: 5rem !important;
+    &:hover{
+      color: $colorHoverButton;    
+      cursor: pointer;
+      -webkit-transition: background-color 2s ease-out;
+      -moz-transition: background-color 2s ease-out;
+      -o-transition: background-color 2s ease-out;
+      transition: background-color 2s ease-out;
+      transition-delay: 2s;
+    }
+}
+
+.MuiButton-textSecondary:hover{
+  background-color: $colorHoverButton !important;
+}

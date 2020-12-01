@@ -1,0 +1,42 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+}
+
+.container{
+
+    padding: 1rem;
+
+    max-width: 1140px;   
+
+    @media #{$xs}{
+      max-width: auto;
+    } 
+    @media #{$sm}{
+      max-width: 540px;
+    }
+    @media #{$sm}{
+      max-width: 720px;
+    }
+    @media #{$lg}{
+      max-width: 960px;
+    }
+    @media #{$lgextra}{
+      max-width: 1140px;
+    }
+}
+
+.mx-auto{
+  margin: auto;
+}
+
+.text-center{
+    text-align: center;
+}

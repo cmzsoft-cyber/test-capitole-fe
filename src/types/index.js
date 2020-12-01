@@ -1,0 +1,1 @@
+export const CREATE_NEW_CARD = 'CREATE_NEW_CARD'
