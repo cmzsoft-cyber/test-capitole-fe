@@ -1,7 +1,6 @@
 
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch } from 'react-redux';
-import Icon from '@material-ui/core/Icon';
 import { useFormik } from 'formik';
 import * as Yup from 'yup'
 import { generate } from 'shortid';
@@ -12,7 +11,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { newCard } from '../actions/cardAction'
 
 
-const Formbutton = ({ open, handleClose}) => {   
+const Formbutton = ({ open, handleClose }) => {   
 
     const dispatch = useDispatch()
 

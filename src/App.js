@@ -28,7 +28,7 @@ function App() {
       <>
         <div className="container mx-auto">
 
-          <h1 className="text-center main-title">
+          <h1 className="text-center main-title" data-testid='title-app'>
             <span className="main-color">Test</span> Capitole FE          
           </h1>    
 
@@ -39,7 +39,12 @@ function App() {
             handleClose={handleClose}
           />
 
-          <Icon className="btn-custom" color="secondary" onClick={handleClickOpen}>
+          <Icon 
+            data-testid='btn-add-card'
+            className="btn-custom" 
+            color="secondary" 
+            onClick={handleClickOpen}
+          >
             add_circle
           </Icon> 
 

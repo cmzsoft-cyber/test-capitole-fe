@@ -40,24 +40,33 @@ const CardsList = () => {
 
     return ( 
       <>
-        <div className="col s12 right-align colFilters">
-          <Button 
-            variant="contained" 
-            color="secondary" 
-            title="Ordenar por título ASC/DESC"
-            onClick={()=>orderByTitle()}
-          >
-            <SortByAlphaIcon className="custom-icon"/>
-          </Button>
-          <Button 
-            variant="contained" 
-            color="secondary" 
-            title="Ordenar por creación ASC/DESC"
-            onClick={()=>orderByDate()}
-          >
-            <UpdateIcon className="custom-icon"/>
-          </Button>
-        </div>
+        { 
+          cards.length >= 2 ? (
+
+            <div className="col s12 right-align colFilters">
+              <Button 
+                variant="contained" 
+                color="secondary" 
+                title="Ordenar por título ASC/DESC"
+                onClick={()=>orderByTitle()}
+              >
+                <SortByAlphaIcon className="custom-icon"/>
+              </Button>
+              <Button 
+                variant="contained" 
+                color="secondary" 
+                title="Ordenar por creación ASC/DESC"
+                onClick={()=>orderByDate()}
+              >
+                <UpdateIcon className="custom-icon"/>
+              </Button>
+            </div>
+
+          ) : (
+            ""
+          )
+        }
+        
 
         <Grid container className={classes.root} spacing={4}>          
             { 
