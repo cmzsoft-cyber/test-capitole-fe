@@ -1,6 +1,5 @@
 .button-content{
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    width: 100%;    
     position: absolute;
     top: 0;
     left: 0;
@@ -9,4 +8,29 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-transition: background-color 1s ease-out;
+    -moz-transition: background-color 1s ease-out;
+    -o-transition: background-color 1s ease-out;
+    transition: background-color 1s ease-out;
+    transition-delay: 1s;    
+}
+
+.dialog-title{
+    text-align: center;
+    h2{
+        font-weight: bold;
+        font-size: 2rem;
+        @media #{$xs}{
+            font-size: 1.5rem;
+        }
+    }    
+}
+
+.dialog-content{
+    padding: 3rem;   
+    min-width: 400px;
+    @media #{$xssm}{
+        min-width: auto;
+    } 
 }

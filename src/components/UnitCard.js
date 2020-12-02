@@ -11,6 +11,7 @@ import Grid from '@material-ui/core/Grid'
 
 // Delete Modal
 import DeleteModal from './DeleteModal'
+import EditModal from './EditModal';
 
 // Edit Modal
 
@@ -40,17 +41,24 @@ const CustomButton = styled(Button)({
 const UnitCard = ({card}) => {
 
     const classes = useStyles()
-    const { id, title, description, image} = card  
+    const { id, title, description, image, date} = card  
     const [ show, setShow ] = useState(false)
     
-    // Delete Modal
+    // Delete Modal State
     const [openDelete, setOpenDelete] = useState(false);
     const toggleDelete = () => {
         setOpenDelete(!openDelete);
         setShow(false)
     }; 
 
-    // Edit Modal
+    // Edit Modal State
+    const [openUpdate, setOpenUpdate] = useState(false);
+    const toggleUpdate = () => {
+        setOpenUpdate(!openUpdate);
+        setShow(false)
+    }; 
+
+    const defaultImg = '/static/img/notfound.png'
 
     return (
 
@@ -63,17 +71,17 @@ const UnitCard = ({card}) => {
                     <CardMedia
                         className={classes.media}                      
                         alt={title}
-                        image={image}
+                        image={image ? image : defaultImg}
                         component="img"
                         onError={e => {
-                            e.target.src = '/static/img/notfound.png'
+                            e.target.src = defaultImg
                         }}
                     />
                     <CardContent>
                         <Typography gutterBottom variant="h5" component="h2">
                             { title }
                         </Typography>
-                        <Typography variant="body2" color="textSecondary" component="p">
+                        <Typography variant="body2" color="textSecondary" component="p" className="overflow-ellipsis">
                             { description }
                         </Typography>
                     </CardContent>
@@ -82,7 +90,7 @@ const UnitCard = ({card}) => {
                     show && (
                         <div className="button-content">
                             <div className="button-group">
-                                <CustomButton size="small" color="secondary">
+                                <CustomButton size="small" color="secondary" onClick={()=>toggleUpdate()}>
                                     Editar
                                 </CustomButton>
                                 <CustomButton size="small" color="secondary" onClick={()=>toggleDelete()}>
@@ -93,6 +101,17 @@ const UnitCard = ({card}) => {
                     )
                 }       
             </Card>  
+
+            <EditModal
+                id={id}
+                title={title}
+                description={description}
+                image={image}
+                date={date}
+                openUpdate={openUpdate}
+                toggleUpdate={toggleUpdate}
+                CustomButton={CustomButton}
+            />
 
             <DeleteModal 
                 id={id}

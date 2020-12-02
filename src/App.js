@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
+import Icon from '@material-ui/core/Icon';
 import './styles/styles.scss'
 
 // Redux 
@@ -11,13 +12,37 @@ import CardsList from './components/CardsList'
 
 
 function App() {
+
+  const [open, setOpen] = useState(false)   
+
+  const handleClickOpen = () => {
+    setOpen(true)
+  };
+
+  const handleClose = () => {
+    setOpen(false)
+  };  
+
   return (
     <Provider store={store}>
       <>
         <div className="container mx-auto">
-          <h1 className="text-center">Test Capitole FE</h1>          
+
+          <h1 className="text-center main-title">
+            <span className="main-color">Test</span> Capitole FE          
+          </h1>    
+
           <CardsList />
-          <Formbutton />
+
+          <Formbutton 
+            open={open}           
+            handleClose={handleClose}
+          />
+
+          <Icon className="btn-custom" color="secondary" onClick={handleClickOpen}>
+            add_circle
+          </Icon> 
+
         </div>
       </>
     </Provider>

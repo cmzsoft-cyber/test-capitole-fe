@@ -1,10 +1,10 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
-import Dialog from '@material-ui/core/Dialog';
-import DialogActions from '@material-ui/core/DialogActions';
-import DialogContent from '@material-ui/core/DialogContent';
-import DialogContentText from '@material-ui/core/DialogContentText';
-import DialogTitle from '@material-ui/core/DialogTitle';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import Dialog from '@material-ui/core/Dialog'
+import DialogActions from '@material-ui/core/DialogActions'
+import DialogContent from '@material-ui/core/DialogContent'
+import DialogContentText from '@material-ui/core/DialogContentText'
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 // Redux actions
 import { deleteCard } from '../actions/cardAction'
@@ -26,22 +26,28 @@ const DeleteModal= ({id, openDelete, toggleDelete, CustomButton}) => {
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-            <DialogTitle id="alert-dialog-title">
-                {"Eliminar tarjeta"}
-            </DialogTitle>
-            <DialogContent>
-                <DialogContentText id="alert-dialog-description">
-                    ¿Seguro que quieres eliminar esta tarjeta?
-                </DialogContentText>
-            </DialogContent>
-            <DialogActions>
-                <CustomButton onClick={toggleDelete} color="secondary" size="small">
-                    Cancelar
-                </CustomButton>
-                <CustomButton onClick={()=>deleteCardById()} color="secondary" size="small" autoFocus>
-                    Eliminar
-                </CustomButton>
-            </DialogActions>
+                <DialogTitle id="alert-dialog-title">
+                    {"Eliminar tarjeta"}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                        ¿Seguro que quieres eliminar esta tarjeta?
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <CustomButton 
+                        onClick={toggleDelete} 
+                        color="secondary" 
+                        size="small">
+                            Cancelar
+                    </CustomButton>
+                    <CustomButton 
+                        onClick={()=>deleteCardById()} 
+                        color="secondary" 
+                        size="small">
+                            Eliminar
+                    </CustomButton>
+                </DialogActions>
             </Dialog>
         </div>
     );

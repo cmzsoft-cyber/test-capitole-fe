@@ -1,55 +1,57 @@
-
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import Icon from '@material-ui/core/Icon';
-import { useFormik } from 'formik';
+import React from 'react'
+import { useDispatch } from 'react-redux'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
-import { generate } from 'shortid';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 // Redux actions
-import { newCard } from '../actions/cardAction'
+import { editCard } from '../actions/cardAction'
 
-
-const Formbutton = ({ open, handleClose}) => {   
+const EditModal = ({
+    id, 
+    title,
+    description,
+    image,
+    date,
+    openUpdate, 
+    toggleUpdate, 
+    CustomButton
+}) => {    
 
     const dispatch = useDispatch()
-
-    const addNewCard = card => {
-        dispatch( newCard(card) )
-    }
     
+    const editCardNewValues = values => {
+        dispatch( editCard(values) )
+    }
 
     // Form validator
     const formik = useFormik({
+        enableReinitialize: true,
         initialValues:{
-            title: '',
-            description: '',
-            image: '',
-            date: ''
+            id: id,
+            title: title,
+            description: description,
+            image: image,
+            date: date
         },
         validationSchema: Yup.object({
             title: Yup.string().required('El título es obligatorio'),
             description: Yup.string().required('La descripción es obligatoria')
         }),
-        onSubmit: (values, {resetForm}) => {         
-            let dateNow = new Date().getTime()
-            let id = generate()
-            values.date = dateNow;
-            values.id = id;
-            addNewCard(values)                 
-            handleClose()
-            resetForm({})
+        onSubmit: (values, {resetForm}) => {       
+            editCardNewValues(values)   
+            resetForm({})              
+            toggleUpdate()            
         }
     })
 
     return ( 
         <>                         
-            <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+            <Dialog open={openUpdate} onClose={toggleUpdate} aria-labelledby="form-dialog-title">
                 <div className="dialog-content">
                     <DialogTitle id="form-dialog-title" className="dialog-title">
-                        Nueva tarjeta
+                        Editar tarjeta
                     </DialogTitle>
 
                     <div className="col s12">
@@ -60,14 +62,15 @@ const Formbutton = ({ open, handleClose}) => {
                                 <input
                                     type="text"
                                     id="title"
-                                    name="title"                                                                    
+                                    name="title"           
                                     value={formik.values.title}
                                     onChange={formik.handleChange}
                                     onBlur={formik.handleBlur}
                                 />
 
-                                <label htmlFor="title">Título*</label>
-                            
+                               
+                                <label htmlFor="title" className={ title ? 'active' : ''}>Título*</label>
+                                
 
                                 { formik.touched.title && formik.errors.title ? 
                                     (
@@ -88,7 +91,7 @@ const Formbutton = ({ open, handleClose}) => {
                                     onBlur={formik.handleBlur}
                                 />
 
-                                <label htmlFor="description">Descripción*</label>
+                                <label htmlFor="description" className={ description ? 'active' : ''}>Descripción*</label>
 
                                 { formik.touched.description && formik.errors.description ? 
                                     (
@@ -109,15 +112,22 @@ const Formbutton = ({ open, handleClose}) => {
                                     onBlur={formik.handleBlur}
                                 />
 
-                                <label htmlFor="image">Imagen (Url)</label>
+                                <label htmlFor="image" className={ image ? 'active' : ''}>Imagen (Url)</label>
 
                             </div>
                             
                             <div className="col s6 text-center colSubmit">
+                                <CustomButton 
+                                    onClick={toggleUpdate} 
+                                    color="secondary" 
+                                    size="small"
+                                    className="btn">
+                                        Cancelar
+                                </CustomButton>
                                 <input
                                     type="submit"
                                     className="btn mx-auto"
-                                    value="Añadir"                                    
+                                    value="Editar"                                    
                                 />    
                             </div>      
 
@@ -125,10 +135,10 @@ const Formbutton = ({ open, handleClose}) => {
                     </div>
                 </div>
 
-            </Dialog>       
+            </Dialog>   
 
         </>
     );
 }
  
-export default Formbutton;
+export default EditModal;
