@@ -28,7 +28,7 @@ _Si no se ha abierto directamente el navegador, abrir una nueva pestaña en el *
 http://localhost:3000
 ```
 
-### Tecnologías utilizadas 📋
+## Tecnologías utilizadas 📋
 * React
 * Redux
 * ES6
@@ -40,7 +40,9 @@ Botón que muestra un modal con un sencillo formulario para introducir los datos
 la nueva tarjeta:
 
 1- Título (obligatorio)
+
 2- Descripción (obligatorio)
+
 3- Imagen (opcional y solamente la url, no es necesario que permita subir
 imágenes)
 
