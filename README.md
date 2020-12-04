@@ -31,7 +31,12 @@ http://localhost:3000
 ## Tecnologías utilizadas 📋
 * React
 * Redux
+* Hooks
+* Stateless functional components
+* Styled components
 * ES6
+* Formik
+* Yup
 * Material UI / Materialize
 * Sass
 
