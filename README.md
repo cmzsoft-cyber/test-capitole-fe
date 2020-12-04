@@ -40,7 +40,7 @@ http://localhost:3000
 * Material UI / Materialize
 * Sass
 
-## Workflow de la aplicación
+## Workflow de la aplicación 📦
 Botón que muestra un modal con un sencillo formulario para introducir los datos de
 la nueva tarjeta:
 
